@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import unittest
-
+import re
 
 class Bot():
 
     def __init__(self, owner_name):
-        self.owner_name = owner_name
+        self.pattern = re.compile("Hi,.*"+owner_name)
 
     def reply(self, call):
-        if self.owner_name in call:
+        if self.pattern.match(call):
             return "Hello my Boss!"
         else:
             return "Hello"
